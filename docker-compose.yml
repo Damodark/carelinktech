@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=17fe157c7458a39d3c7d28e4ffd2ed46
+      - DJANGO_DEBUG=True
