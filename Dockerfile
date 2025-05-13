@@ -1,6 +1,7 @@
 # Use official Python image
 FROM python:3.12-slim
 
+
 # Install system dependencies
 RUN apt-get update && \
     apt-get install --no-install-recommends -y gcc libgomp1 && \
@@ -24,14 +25,11 @@ ENV HOME=/home/carelink
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-COPY --chown=carelink:carelink requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-
+# Copy source code
 COPY --chown=carelink:carelink . .
 
-
+# Expose port
 EXPOSE 8000
 
-
+# Start Gunicorn (make sure this matches your WSGI path)
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "carelinktech.wsgi:application"]

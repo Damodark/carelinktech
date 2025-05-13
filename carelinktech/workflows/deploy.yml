@@ -1,0 +1,16 @@
+name: Deploy CareLink Tech
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Build
+        run: |
+          docker build -t carelinktech .
+          docker run --rm carelinktech python manage.py migrate
+          docker run --rm carelinktech python manage.py collectstatic --noinput
