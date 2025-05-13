@@ -24,11 +24,14 @@ ENV HOME=/home/carelink
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Copy source code
+COPY --chown=carelink:carelink requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+
 COPY --chown=carelink:carelink . .
 
-# Expose port
+
 EXPOSE 8000
 
-# Start Gunicorn
+
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "carelinktech.wsgi:application"]
