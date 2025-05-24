@@ -1,35 +1,22 @@
-# Use official Python image
+# carelinktech/Dockerfile
+
 FROM python:3.12-slim
 
-
-# Install system dependencies
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y gcc libgomp1 && \
+    apt-get install --no-install-recommends -y gcc libgomp1 libpq-dev && \
     rm -rf /var/lib/apt/lists/* && \
     adduser --disabled-password --gecos '' carelink
 
-# Set working directory
 WORKDIR /app
 
-# Upgrade pip
+USER root
 RUN pip install --upgrade pip
 
-# Copy requirements
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create non-root user after installing packages
-RUN chown -R carelink:carelink /app
-USER carelink
-ENV HOME=/home/carelink
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE=1
+COPY . .
 
-# Copy source code
-COPY --chown=carelink:carelink . .
-
-# Expose port
 EXPOSE 8000
 
-# Start Gunicorn (make sure this matches your WSGI path)
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "carelinktech.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "techdestination.wsgi:application"]
