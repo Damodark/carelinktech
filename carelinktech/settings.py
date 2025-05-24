@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'carelinktech.wsgi.application'
 # Database
 if os.getenv("DATABASE_URL"):
     DATABASES = {
-        'default': dj_database_url.config()
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
 else:
     DATABASES = {
@@ -74,10 +74,10 @@ else:
             'PORT': '5432',
         }
     }
-# Production DB config
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
+# # Production DB config
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+# }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
