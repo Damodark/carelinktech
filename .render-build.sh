@@ -2,10 +2,10 @@
 set -e
 
 # Build Docker image
-docker build -t techdestination .
+docker build -t karmatechdestination .
 
 # Apply database migrations
-docker run --rm techdestination python manage.py migrate
+docker run --rm karmatechdestination python manage.py migrate
 
 # Collect static files (if needed)
-docker run --rm techdestination python manage.py collectstatic --noinput
+docker run --rm karmatechdestination python manage.py collectstatic --noinput
