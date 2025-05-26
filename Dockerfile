@@ -1,4 +1,4 @@
-# carelinktech/Dockerfile
+# techdestination/Dockerfile
 
 FROM python:3.12-slim
 
@@ -19,4 +19,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "techdestination.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "karmatechdestination.wsgi:application"]

@@ -38,7 +38,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'carelinktech.urls'
+ROOT_URLCONF = 'karmatechdestination.urls'
 
 TEMPLATES = [
     {
@@ -56,24 +56,25 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'carelinktech.wsgi.application'
+WSGI_APPLICATION = 'karmatechdestination.wsgi.application'
 
 # Database
 if os.getenv("DATABASE_URL"):
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+        'default': dj_database_url.config()
     }
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'carelinktech',
-            'USER': 'carelink',
-            'PASSWORD': 'carelinkpass',
-            'HOST': 'db',
+            'NAME': 'techdestination',
+            'USER': 'techdest',
+            'PASSWORD': 'yoursecurepassword123',
+            'HOST': 'localhost',
             'PORT': '5432',
         }
     }
+
 # # Production DB config
 # DATABASES = {
 #     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
@@ -107,6 +108,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # e.g., carelinktech@gmail.com
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # e.g., techdestination@gmail.com
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # App password
 EMAIL_TO = os.getenv('EMAIL_TO')

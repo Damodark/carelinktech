@@ -2,11 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CareLink Tech</title>
+    <title>KarmaTechDestination – IT Consulting</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(to right, #0D1B3A, #1E2A5C);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+        }
+
+        .section {
+            padding: 2rem 4rem;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact form {
+            display: grid;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .contact input, .contact textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact button {
+            background: #4A90E2;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: fit-content;
+            margin: auto;
+        }
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to CareLink Tech</h1>
-    <p>Your secure IT consulting website is running!</p>
-    <p>Use the navigation links to explore the site.</p>
+
+<header>
+    <h1>KarmaTechDestination</h1>
+    <p>Tech with purpose. Service with heart.</p>
+</header>
+
+<section class="section services">
+    <h2>Our Services</h2>
+    <ul>
+        <li>Managed IT Services</li>
+        <li>Cybersecurity & Compliance</li>
+        <li>Cloud Migration & DevOps</li>
+        <li>Digital Transformation Strategy</li>
+        <li>IT Consultation & Audit</li>
+    </ul>
+</section>
+
+<section class="section contact">
+    <h2>Contact Us</h2>
+    <form action="/contact/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    &copy; 2025 KarmaTechDestination Pty Ltd | ABN: 123 456 789 01
+</footer>
+
 </body>
 </html>

@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Docker Build
         run: |
-          docker build -t carelinktech .
-          docker run --rm carelinktech python manage.py migrate
-          docker run --rm carelinktech python manage.py collectstatic --noinput
+          docker build -t techdestination .
+          docker run --rm techdestination python manage.py migrate
+          docker run --rm techdestination python manage.py collectstatic --noinput

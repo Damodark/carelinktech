@@ -4,34 +4,28 @@ services:
   db:
     image: postgres:15
     environment:
-      POSTGRES_DB: carelinktech
-      POSTGRES_USER: carelink
-      POSTGRES_PASSWORD: carelinkpass
+      POSTGRES_DB: techdestination
+      POSTGRES_USER: techdest
+      POSTGRES_PASSWORD: yoursecurepassword123
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - carelinknet
+    restart: unless-stopped
 
   web:
     build: .
-    command: bash -c "python manage.py migrate --noinput && gunicorn techdestination.wsgi:application --bind 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate --noinput && gunicorn karmatechdestination.wsgi:application --bind 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=postgres://carelink:carelinkpass@db:5432/carelinktech
-      - DJANGO_SECRET_KEY=your-secret-key-here
-      - DJANGO_DEBUG=True
     depends_on:
       - db
-    networks:
-      - carelinknet
-    volumes:
-      - .:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=karmatechdestination.settings
+      - DATABASE_URL=postgres://techdest:yoursecurepassword123@db:5432/techdestination?sslmode=disable
+      - DJANGO_SECRET_KEY=django-insecure-techdestination-key
+      - DJANGO_DEBUG=True
     restart: unless-stopped
 
 volumes:
   postgres_data:
-
-networks:
-  carelinknet:
-    driver: bridge

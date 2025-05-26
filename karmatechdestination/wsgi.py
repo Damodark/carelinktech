@@ -1,5 +1,5 @@
 """
-WSGI config for carelinktech project.
+WSGI config for tech destination project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

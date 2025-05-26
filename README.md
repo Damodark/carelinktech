@@ -1,6 +1,6 @@
 # CareLink Tech – IT Consulting Website
 
-A secure, container-ready Django website for **CareLink Tech** – built with heart and logic.
+A secure, container-ready Django website for **Tech destination** – built with heart and logic.
 
 ## 🔧 Technologies Used
 - Python 3.12
@@ -12,5 +12,5 @@ A secure, container-ready Django website for **CareLink Tech** – built with he
 ## 🐳 To Build Locally
 
 ```bash
-docker build -t carelinktech .
-docker run -d -p 8000:8000 carelinktech
+docker build -t techdestination .
+docker run -d -p 8000:8000 techdestination

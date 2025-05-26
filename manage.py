@@ -3,10 +3,17 @@
 import os
 import sys
 
-
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'techdestination.settings')
+    # Load environment variables from .env (if available)
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+    except ImportError:
+        pass
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'karmatechdestination.settings')
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -15,6 +22,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
     execute_from_command_line(sys.argv)
 
 
